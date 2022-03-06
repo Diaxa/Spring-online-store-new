@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Data
 @Service
@@ -36,9 +37,7 @@ public class GoodsServiceImpl implements GoodsService {
         goodsRepository.deleteById(id);
     }
     public  List<Goods> getAllByCategory(String category){
-        List<Goods> someGoods = goodsRepository.findByCategory(category);
-        return someGoods;
-
+        return goodsRepository.findByCategory(category);
     }
 
 

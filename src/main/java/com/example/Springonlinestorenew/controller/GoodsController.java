@@ -41,7 +41,7 @@ public class GoodsController {
         goodsServiceImpl.deleteGoods(id);
     }
     @GetMapping("/find/{category}")
-    public List<Goods> getGoods(String category) {
+    public List<Goods> getGoods(@PathVariable String category) {
         List<Goods> goodsCategory =  goodsServiceImpl.getAllByCategory(category);
         log.info("Goods category size " + goodsCategory.size() );
         return  goodsCategory;

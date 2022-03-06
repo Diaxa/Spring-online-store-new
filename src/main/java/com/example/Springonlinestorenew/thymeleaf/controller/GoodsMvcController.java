@@ -59,7 +59,12 @@ public class GoodsMvcController {
         goodsService.deleteGoods(id);
         return "redirect:/goods";
     }
-
+    @GetMapping("/filter")
+    public String filteredList (Model model,@RequestParam("category") String category){
+        List<Goods> goodsList = goodsService.getAllByCategory(category);
+        model.addAttribute("goodsList", goodsList);
+        return "goods-list";
+    }
 
 
 
