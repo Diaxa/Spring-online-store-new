@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Employee List</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
+<!--    <link rel="stylesheet" th:href="@{/css/main.css}"/>-->
+
+</head>
+
+<body>
+
+<h1>Goods List</h1>
+
+<div>
+    <a th:href="@{/goods/form}"
+       class="btn btn-primary btn-sm mb-3">
+        Add Goods
+    </a>
+</div>
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col"> Id </th>
+            <th scope="col"> Category </th>
+            <th scope="col"> GoodsCode </th>
+            <th scope="col"> Color </th>
+            <th scope="col"> Price </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${goodsList.empty}">
+            <td colspan="2"> No Goods Available </td>
+        </tr>
+        <tr th:each="goods : ${goodsList}"
+            scope="row">
+            <td><span th:text="${goods.id}"> Id </span></td>
+            <td><span th:text="${goods.category}"> Category </span></td>
+            <td><span th:text="${goods.goodsCode}"> Goods Code </span></td>
+            <td><span th:text="${goods.color}"> Color </span></td>
+            <td><span th:text="${goods.price}"> Price </span></td>
+            <td>
+                <a th:href="@{/goods/formForUpdate(goodsId=${goods.id})}"
+                   class="btn btn-info btn-sm mb-3">
+                    Update
+                </a>
+
+                <a th:href="@{/goods/delete(goodsId=${goods.id})}"
+                   class="btn btn-danger btn-sm mb-3"
+                   onclick="if ( !(confirm('Are you sure you want to delete this goods?'))) return false">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
