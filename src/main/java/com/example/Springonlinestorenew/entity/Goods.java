@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Goods {
@@ -12,13 +13,13 @@ public class Goods {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    @NotBlank(message = "Category should not be blank!")
     private String category;
-
+    @NotBlank(message = "Goods Code should not be blank!")
     private String goodsCode;
-
+    @NotBlank(message = "Color should not be blank!")
     private String color;
-
+    @NotNull(message = "Price should not be null!")
     private Double price;
 
     public Goods() {

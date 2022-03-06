@@ -8,6 +8,7 @@ import lombok.Data;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -41,7 +42,14 @@ public class GoodsMvcController {
     }
 
     @PostMapping("/save")
-    public String saveGoods( @ModelAttribute("goods") Goods goods){
+    public String saveGoods(@Valid @ModelAttribute("goods") Goods goods,BindingResult result){
+        if (result.hasErrors()){
+            String errorMessage = "";
+            for (FieldError error : result.getFieldErrors()){
+                errorMessage += error.getField() + ": " + error.getDefaultMessage() + "\n";
+            }
+            return "goods-form";
+        }
         goodsService.saveGoods(goods);
         return "redirect:/goods";
     }

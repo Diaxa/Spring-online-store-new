@@ -15,29 +15,29 @@
     </a>
 </div>
 <div class="container">
-    <form th:action="@{/goods/save}" th:object="${goods}" method="POST">
+    <form th:action="@{/goods/formForUpdate}" th:object="${goods}" method="POST">
 
         <input type="hidden" class="form-control" id="id" th:field="*{id}">
 
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>
             <input type="text" class="form-control" id="category" th:field="*{category}">
-            <td th:if="${#fields.hasErrors('category')}" th:errors="*{category}">Category Error</td>
+
         </div>
         <div class="mb-3">
             <label for="goodsCode" class="form-label">Goods Code</label>
             <input type="text" class="form-control" id="goodsCode" th:field="*{goodsCode}">
-            <td th:if="${#fields.hasErrors('goodsCode')}" th:errors="*{goodsCode}">Goods Code Error</td>
+
         </div>
         <div class="mb-3">
             <label for="color" class="form-label">Color</label>
             <input type="text" class="form-control" id="color" th:field="*{color}">
-            <td th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Color Error</td>
+
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
             <input type="text" class="form-control" id="price" th:field="*{price}">
-            <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</td>
+
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
