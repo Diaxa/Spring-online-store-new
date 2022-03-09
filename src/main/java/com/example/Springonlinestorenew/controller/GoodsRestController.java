@@ -8,12 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api")
-public class GoodsController {
+public class GoodsRestController {
 
     @Autowired
     private GoodsServiceImpl goodsServiceImpl;
@@ -41,7 +40,7 @@ public class GoodsController {
         goodsServiceImpl.deleteGoods(id);
     }
     @GetMapping("/find/{category}")
-    public List<Goods> getGoods(@PathVariable String category) {
+    public List<Goods> getGoodsss(@PathVariable String category) {
         List<Goods> goodsCategory =  goodsServiceImpl.getAllByCategory(category);
         log.info("Goods category size " + goodsCategory.size() );
         return  goodsCategory;

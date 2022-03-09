@@ -35,8 +35,8 @@ public class GoodsMvcController {
     }
 
     @GetMapping("/formForUpdate")
-    public String goodsFormForUpdate(@RequestParam("goodsId") Long goodsId, Model model){
-        Goods goods = goodsService.getGoodsById(goodsId);
+    public String goodsFormForUpdate(@RequestParam("goodsID") Long goodsID, Model model){
+        Goods goods = goodsService.getGoodsById(goodsID);
         model.addAttribute("goods", goods);
         return "/goods-form";
     }
@@ -60,18 +60,12 @@ public class GoodsMvcController {
         return "redirect:/goods";
     }
     @GetMapping("/filter")
-    public String filteredList (Model model,@RequestParam("category") String category){
-        List<Goods> goodsList = goodsService.getAllByCategory(category);
-        model.addAttribute("goodsList", goodsList);
-        return "goods-list";
+    public String filteredList (@RequestParam(required=false,name="category") String category ,Model model){
+        List<Goods> goodsListCategory = goodsService.getAllByCategory(category);
+        model.addAttribute("search", goodsListCategory);
+        return "goods-find";
+
     }
-
-
-
-
-
-
-
 
 
 }
