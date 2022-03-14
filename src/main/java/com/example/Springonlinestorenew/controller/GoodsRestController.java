@@ -39,6 +39,7 @@ public class GoodsRestController {
     public void getGoodss(@PathVariable Long id) {
         goodsServiceImpl.deleteGoods(id);
     }
+
     @GetMapping("/find/{category}")
     public List<Goods> getGoodsss(@PathVariable String category) {
         List<Goods> goodsCategory =  goodsServiceImpl.getAllByCategory(category);

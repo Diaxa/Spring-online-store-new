@@ -35,8 +35,8 @@ public class GoodsMvcController {
     }
 
     @GetMapping("/formForUpdate")
-    public String goodsFormForUpdate(@RequestParam("goodsID") Long goodsID, Model model){
-        Goods goods = goodsService.getGoodsById(goodsID);
+    public String goodsFormForUpdate(@RequestParam("goodsID") Long goodsId, Model model){
+        Goods goods = goodsService.getGoodsById(goodsId);
         model.addAttribute("goods", goods);
         return "/goods-form";
     }
@@ -59,13 +59,29 @@ public class GoodsMvcController {
         goodsService.deleteGoods(id);
         return "redirect:/goods";
     }
-    @GetMapping("/filter")
-    public String filteredList (@RequestParam(required=false,name="category") String category ,Model model){
-        List<Goods> goodsListCategory = goodsService.getAllByCategory(category);
-        model.addAttribute("search", goodsListCategory);
-        return "goods-find";
 
-    }
+    @GetMapping("/filter")
+    public String filteredList (@RequestParam(required=false,name="category") String category,Model model){
+            List<Goods> goodsListCategory = goodsService.getAllByCategory(category);
+            model.addAttribute("goods", goodsListCategory);
+            return "goods-find";
+        }
+
+        ////Second way to search by category
+//@RequestMapping(path = {"/","/filter"})
+//public String searchForGoods(Goods goods, Model model, String category) {
+//
+//    if (category != null) {
+//        List<Goods> list = goodsService.getAllByCategory(category);
+//        model.addAttribute("goods", list);
+//    } else {
+//        List<Goods> list = goodsService.getAllGoods();
+//        model.addAttribute("goods", list);
+//    }
+//    return "goods-find";
+//}
+
+
 
 
 }

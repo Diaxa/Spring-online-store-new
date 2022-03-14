@@ -16,9 +16,12 @@
 </div>
 <div class="container mt-5">
     <h2 align="center">Search in Goods List</h2>
-    <form th:action="@{/filter}" method="get">
-        <input type="text" name="keyword" th:value="${search}"  placeholder="Find by Category" size="50" >
-        <button type="submit" class="btn btn-info">Search</button>
+    <form action="#" th:action="@{/goods/filter}" th:object="${goods}" method="get">
+
+        <input type="text" name="category" id="category"   placeholder="Find by Category" size="50" >
+
+
+        <button type="submit" class="btn btn-info"  value="filter" >Search</button>
 
         <button type="reset" class="btn btn-info">Reset</button>
 
@@ -32,29 +35,30 @@
             <th>Goods Code</th>
             <th>Color</th>
             <th>Price</th>
+            <th>Action</th>
 
         </tr>
         </thead>
         <tbody>
-        <tr th:each="l : ${search}" th:field="${l}">
+        <tr th:each="l : ${goods}" th:field="${goods}">
             <td th:text="${lStat.index+1}"></td>
             <td th:text="${l.category}"></td>
             <td th:text="${l.goodsCode}"></td>
             <td th:text="${l.color}"></td>
             <td th:text="${l.price}"></td>
 
-
-
+            <td>
                 <a th:href="@{/goods/formForUpdate(goodsID=${l.id})}"
                    class="btn btn-info btn-sm mb-3">
                     Update
                 </a>
+                <a th:href="@{/goods/delete(goodsId=${l.id})}"
+                   class="btn btn-danger btn-sm mb-3"
+                   onclick="if ( !(confirm('Are you sure you want to delete this goods?'))) return false">
+                    Delete
+                </a>
+            </td>
 
-            </td>
-            <td>
-                <a th:href="@{/update/{id}(id=${l.id})}" ><i class="fa fa-edit" ></i></a>
-                <a th:href="@{/delete/{id}(id=${l.id})}" ><i class="fa fa-remove"></i></a>
-            </td>
         </tr>
         </tbody>
     </table>

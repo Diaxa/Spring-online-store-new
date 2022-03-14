@@ -12,4 +12,5 @@ public interface GoodsService {
     void deleteGoods(Long id);
     List<Goods> getAllByCategory(String category);
 
+
 }

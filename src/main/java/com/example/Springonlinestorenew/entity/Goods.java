@@ -1,5 +1,7 @@
 package com.example.Springonlinestorenew.entity;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -60,6 +62,7 @@ public class Goods {
 
     public void setId(Long id) {
         this.id = id;
+
     }
 
     public String getGoodsCode() {

@@ -23,6 +23,7 @@
         Find Goods
     </a>
 
+
 </div>
 <div>
     <table class="table table-sm">
@@ -42,6 +43,7 @@
         </tr>
         <tr th:each="goods : ${goodsList}"
             scope="row">
+
             <td><span th:text="${goods.id}"> Id </span></td>
             <td><span th:text="${goods.category}"> Category </span></td>
             <td><span th:text="${goods.goodsCode}"> Goods Code </span></td>

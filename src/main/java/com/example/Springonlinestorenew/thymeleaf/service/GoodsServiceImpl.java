@@ -36,6 +36,7 @@ public class GoodsServiceImpl implements GoodsService {
     public void deleteGoods(Long id) {
         goodsRepository.deleteById(id);
     }
+
     public  List<Goods> getAllByCategory(String category){
         return goodsRepository.findByCategory(category);
     }
