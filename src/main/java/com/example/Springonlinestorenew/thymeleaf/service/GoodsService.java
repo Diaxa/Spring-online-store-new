@@ -11,6 +11,6 @@ public interface GoodsService {
     Goods saveGoods(Goods goods);
     void deleteGoods(Long id);
     List<Goods> getAllByCategory(String category);
-
+    List<Goods> getAllByGoodsCode(String goodsCode);
 
 }

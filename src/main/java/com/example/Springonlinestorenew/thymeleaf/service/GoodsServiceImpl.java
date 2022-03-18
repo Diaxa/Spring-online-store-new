@@ -40,6 +40,9 @@ public class GoodsServiceImpl implements GoodsService {
     public  List<Goods> getAllByCategory(String category){
         return goodsRepository.findByCategory(category);
     }
+    public  List<Goods> getAllByGoodsCode(String goodsCode){
+        return goodsRepository.findByGoodsCode(goodsCode);
+    }
 
 
 

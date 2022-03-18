@@ -2,10 +2,7 @@ package com.example.Springonlinestorenew.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -23,6 +20,11 @@ public class Goods {
     private String color;
     @NotNull(message = "Price should not be null!")
     private Double price;
+    @Column(nullable = true, length = 64)
+    private String photos;
+    private String photosImagePath;
+
+
 
     public Goods() {
     }
@@ -45,6 +47,12 @@ public class Goods {
                 ", price=" + price +
                 '}';
     }
+    @Transient
+    public String getPhotosImagePath() {
+        if (photos == null || id == null) return null;
+
+        return "/user-photos/" + id + "/" + photos;
+    }
 
     public String getCategory() {
         return category;
@@ -54,7 +62,13 @@ public class Goods {
         this.category = category;
     }
 
+    public String getPhotos() {
+        return photos;
+    }
 
+    public void setPhotos(String photos) {
+        this.photos = photos;
+    }
 
     public Long getId() {
         return id;

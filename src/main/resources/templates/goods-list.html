@@ -12,7 +12,6 @@
 <body>
 
 <h1>Goods List</h1>
-
 <div>
     <a th:href="@{/goods/form}"
        class="btn btn-primary btn-sm mb-3">
@@ -25,6 +24,19 @@
 
 
 </div>
+<form th:action="@{/goods/image/save}"
+      th:object="${goods}" method="post"
+      enctype="multipart/form-data"
+>
+    ...
+    <div>
+
+        <label>Photos: </label>
+        <input type="file" name="image" accept="image/png, image/jpeg" />
+        <img th:src="@{${goods.photosImagePath}}" />
+    </div>
+    ...
+</form>
 <div>
     <table class="table table-sm">
         <thead>

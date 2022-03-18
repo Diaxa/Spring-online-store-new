@@ -16,10 +16,19 @@
 </div>
 <div class="container mt-5">
     <h2 align="center">Search in Goods List</h2>
-    <form action="#" th:action="@{/goods/filter}" th:object="${goods}" method="get">
+    <form action="#"  th:action="@{/goods/filter}" th:object="${goods}" method="get">
 
         <input type="text" name="category" id="category"   placeholder="Find by Category" size="50" >
 
+
+        <button type="submit" class="btn btn-info"  value="filter" >Search</button>
+
+        <button type="reset" class="btn btn-info">Reset</button>
+
+    </form>
+    <form action="#"  th:action="@{/goods/filter/code}" th:object="${goods}" method="get">
+
+        <input type="text"  name="goodsCode" id="goodsCode"   placeholder="Find by Code" size="50" >
 
         <button type="submit" class="btn btn-info"  value="filter" >Search</button>
 
@@ -60,6 +69,7 @@
             </td>
 
         </tr>
+
         </tbody>
     </table>
 </div>
