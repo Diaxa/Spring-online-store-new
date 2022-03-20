@@ -1,7 +1,8 @@
-package com.example.Springonlinestorenew.thymeleaf.service;
+package com.example.Springonlinestorenew.service;
 
 import com.example.Springonlinestorenew.entity.Product;
 import com.example.Springonlinestorenew.repository.ProductRepository;
+import com.example.Springonlinestorenew.service.ProductService;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 

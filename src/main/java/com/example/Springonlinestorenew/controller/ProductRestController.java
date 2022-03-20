@@ -1,7 +1,7 @@
 package com.example.Springonlinestorenew.controller;
 
 import com.example.Springonlinestorenew.entity.Product;
-import com.example.Springonlinestorenew.thymeleaf.service.ProductServiceImpl;
+import com.example.Springonlinestorenew.service.ProductServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

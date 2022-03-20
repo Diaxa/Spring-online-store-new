@@ -1,4 +1,4 @@
-package com.example.Springonlinestorenew.thymeleaf.service;
+package com.example.Springonlinestorenew.service;
 
 import com.example.Springonlinestorenew.entity.Product;
 
