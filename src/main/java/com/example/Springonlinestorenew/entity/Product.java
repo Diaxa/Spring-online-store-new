@@ -1,13 +1,11 @@
 package com.example.Springonlinestorenew.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Goods {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,7 +13,7 @@ public class Goods {
     @NotBlank(message = "Category should not be blank!")
     private String category;
     @NotBlank(message = "Goods Code should not be blank!")
-    private String goodsCode;
+    private String code;
     @NotBlank(message = "Color should not be blank!")
     private String color;
     @NotNull(message = "Price should not be null!")
@@ -26,13 +24,13 @@ public class Goods {
 
 
 
-    public Goods() {
+    public Product() {
     }
 
-    public Goods(Long id, String category, String goodsCode, String color, Double price) {
+    public Product(Long id, String category, String code, String color, Double price) {
         this.id = id;
         this.category = category;
-        this.goodsCode = goodsCode;
+        this.code = code;
         this.color = color;
         this.price = price;
     }
@@ -42,7 +40,7 @@ public class Goods {
         return "Goods{" +
                 "id=" + id +
                 ", category='" + category + '\'' +
-                ", goodsCode='" + goodsCode + '\'' +
+                ", code='" + code + '\'' +
                 ", color='" + color + '\'' +
                 ", price=" + price +
                 '}';
@@ -51,14 +49,6 @@ public class Goods {
     public void setImage(String image) {
         this.image= image;
     }
-
-
-//    public String getPhotosImagePath() {
-//        if (photos == null || id == null) return null;
-//
-//        return "/user-photos/" + id + "/" + photos;
-//    }
-
 
     public String getImage() {
         return this.image;
@@ -89,12 +79,12 @@ public class Goods {
 
     }
 
-    public String getGoodsCode() {
-        return goodsCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setGoodsCode(String goodsCode) {
-        this.goodsCode = goodsCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getColor() {

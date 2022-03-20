@@ -11,32 +11,26 @@
 
 <body>
 
-<h1>Goods List</h1>
+<h1>Product List</h1>
 <div>
-    <a th:href="@{/goods/form}"
+    <a th:href="@{/products/form}"
        class="btn btn-primary btn-sm mb-3">
-        Add Goods
+        Add Product
     </a>
-    <a th:href="@{/goods/filter}"
+    <a th:href="@{/products/filter}"
        class="btn btn-primary btn-sm mb-3">
-        Find Goods
+        Find Product
     </a>
 
 
 </div>
-<form th:action="@{/goods/image/save}"
-      th:object="${goods}" method="post"
-      enctype="multipart/form-data"
->
-    ...
-    <div>
 
+<div>
         <label>Photos: </label>
         <input type="file" name="images" accept="image/png, image/jpeg" />
         <img src="../static/images/furniture.png" width="150"  th:src="@{images/furniture.png}" />
-    </div>
-    ...
-</form>
+
+</div>
 <div>
     <table class="table table-sm">
         <thead>
@@ -44,37 +38,36 @@
             <th scope="col"> Id </th>
             <th scope="col"> Photo </th>
             <th scope="col"> Category </th>
-            <th scope="col"> GoodsCode </th>
+            <th scope="col"> Code </th>
             <th scope="col"> Color </th>
             <th scope="col"> Price </th>
 
         </tr>
         </thead>
         <tbody>
-        <tr th:if="${goodsList.empty}">
-            <td colspan="2"> No Goods Available </td>
+        <tr th:if="${productsList.empty}">
+            <td colspan="2"> No Products Available </td>
         </tr>
-        <tr th:each="goods : ${goodsList}"
+        <tr th:each="product : ${productsList}"
             scope="row">
 
-            <td><span th:text="${goods.id}"> Id </span></td>
+            <td><span th:text="${product.id}"> Id </span></td>
 <!--            <td><img src="../static/images/furniture.png" width="500"  th:src="@{images/furniture.png}" /></td>-->
 
-            <td><img src="../static/images/furniture.png" width="500"  th:src="@{${goods.image}}" /></td>
-
-            <td><span th:text="${goods.category}"> Category </span></td>
-            <td><span th:text="${goods.goodsCode}"> Goods Code </span></td>
-            <td><span th:text="${goods.color}"> Color </span></td>
-            <td><span th:text="${goods.price}"> Price </span></td>
+            <td><img width="100"  th:src="@{${product.image}}" /></td>
+            <td><span th:text="${product.category}"> Category </span></td>
+            <td><span th:text="${product.code}"> Goods Code </span></td>
+            <td><span th:text="${product.color}"> Color </span></td>
+            <td><span th:text="${product.price}"> Price </span></td>
             <td>
-                <a th:href="@{/goods/formForUpdate(goodsID=${goods.id})}"
+                <a th:href="@{/product/formForUpdate(productID=${product.id})}"
                    class="btn btn-info btn-sm mb-3">
                     Update
                 </a>
 
-                <a th:href="@{/goods/delete(goodsId=${goods.id})}"
+                <a th:href="@{/product/delete(productId=${product.id})}"
                    class="btn btn-danger btn-sm mb-3"
-                   onclick="if ( !(confirm('Are you sure you want to delete this goods?'))) return false">
+                   onclick="if ( !(confirm('Are you sure you want to delete this product?'))) return false">
                     Delete
                 </a>
             </td>
