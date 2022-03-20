@@ -22,7 +22,7 @@ public class Goods {
     private Double price;
     @Column(nullable = true, length = 64)
     private String photos;
-    private String photosImagePath;
+    private String image;
 
 
 
@@ -47,11 +47,21 @@ public class Goods {
                 ", price=" + price +
                 '}';
     }
-    @Transient
-    public String getPhotosImagePath() {
-        if (photos == null || id == null) return null;
 
-        return "/user-photos/" + id + "/" + photos;
+    public void setImage(String image) {
+        this.image= image;
+    }
+
+
+//    public String getPhotosImagePath() {
+//        if (photos == null || id == null) return null;
+//
+//        return "/user-photos/" + id + "/" + photos;
+//    }
+
+
+    public String getImage() {
+        return this.image;
     }
 
     public String getCategory() {

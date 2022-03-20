@@ -97,17 +97,18 @@ public class GoodsMvcController {
     }
     @PostMapping("/image/save")
     public RedirectView saveImage(Goods goods,
-                                 @RequestParam("image") MultipartFile multipartFile) throws IOException {
+                                 @RequestParam("image") MultipartFile multipartFile, Model model) throws IOException {
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         goods.setPhotos(fileName);
 
         Goods savedGoods = goodsService.saveGoods(goods);
 
-        String uploadDir = "goods-photos/" + savedGoods.getId();
+        String uploadDir = "images/" + savedGoods.getId();
 
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
+        model.addAttribute("goods",savedGoods);
         return new RedirectView("/goods", true);
     }
 

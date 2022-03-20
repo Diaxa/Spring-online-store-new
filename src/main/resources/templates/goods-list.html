@@ -32,8 +32,8 @@
     <div>
 
         <label>Photos: </label>
-        <input type="file" name="image" accept="image/png, image/jpeg" />
-        <img th:src="@{${goods.photosImagePath}}" />
+        <input type="file" name="images" accept="image/png, image/jpeg" />
+        <img src="../static/images/furniture.png" width="150"  th:src="@{images/furniture.png}" />
     </div>
     ...
 </form>
@@ -42,6 +42,7 @@
         <thead>
         <tr>
             <th scope="col"> Id </th>
+            <th scope="col"> Photo </th>
             <th scope="col"> Category </th>
             <th scope="col"> GoodsCode </th>
             <th scope="col"> Color </th>
@@ -57,6 +58,10 @@
             scope="row">
 
             <td><span th:text="${goods.id}"> Id </span></td>
+<!--            <td><img src="../static/images/furniture.png" width="500"  th:src="@{images/furniture.png}" /></td>-->
+
+            <td><img src="../static/images/furniture.png" width="500"  th:src="@{${goods.image}}" /></td>
+
             <td><span th:text="${goods.category}"> Category </span></td>
             <td><span th:text="${goods.goodsCode}"> Goods Code </span></td>
             <td><span th:text="${goods.color}"> Color </span></td>
