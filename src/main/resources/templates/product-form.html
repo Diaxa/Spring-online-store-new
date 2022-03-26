@@ -15,9 +15,20 @@
     </a>
 </div>
 <div class="container">
+
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file" /><br/><br/>
+        <input type="submit" value="Submit" />
+    </form>
+
+
     <form th:action="@{/products/save}" th:object="${product}" method="POST">
 
         <input type="hidden" class="form-control" id="id" th:field="*{id}">
+
+
+
+
 
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>
@@ -40,6 +51,7 @@
             <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</td>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+
     </form>
 </div>
 </body>

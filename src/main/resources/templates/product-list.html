@@ -28,7 +28,7 @@
 <div>
         <label>Photos: </label>
         <input type="file" name="images" accept="image/png, image/jpeg" />
-        <img src="../static/images/furniture.png" width="150"  th:src="@{images/furniture.png}" />
+        <img src="../static/images/furniture.png"  float=center width="150"  th:src="@{images/furniture.png}" />
 
 </div>
 <div>
@@ -52,20 +52,23 @@
             scope="row">
 
             <td><span th:text="${product.id}"> Id </span></td>
+<!--            Hardcodēta vērtība pievieno vienu konkrētu bildi pēc atrasšanās vietas-->
 <!--            <td><img src="../static/images/furniture.png" width="500"  th:src="@{images/furniture.png}" /></td>-->
-
-            <td><img width="100"  th:src="@{${product.image}}" /></td>
+<!--            Pievieno bildi caur datubāzi, kurā norāda /images/bildes nosaukums.jpg-->
+<!--            <td><img width="100"  th:src="@{${product.image}}" /></td>-->
+<!--            Pievieno bildi no static foldera kuru tikko saglabāja-->
+            <td><img  width="100"  th:src="@{${product.image}}" /></td>
             <td><span th:text="${product.category}"> Category </span></td>
             <td><span th:text="${product.code}"> Goods Code </span></td>
             <td><span th:text="${product.color}"> Color </span></td>
             <td><span th:text="${product.price}"> Price </span></td>
             <td>
-                <a th:href="@{/product/formForUpdate(productID=${product.id})}"
+                <a th:href="@{/products/formForUpdate(productID=${product.id})}"
                    class="btn btn-info btn-sm mb-3">
                     Update
                 </a>
 
-                <a th:href="@{/product/delete(productId=${product.id})}"
+                <a th:href="@{/products/delete(productId=${product.id})}"
                    class="btn btn-danger btn-sm mb-3"
                    onclick="if ( !(confirm('Are you sure you want to delete this product?'))) return false">
                     Delete
