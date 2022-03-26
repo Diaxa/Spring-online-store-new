@@ -36,7 +36,7 @@ public class FileUploadController {
 
     @PostMapping("/upload") // //new annotation since 4.3
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+                                   RedirectAttributes redirectAttributes,@RequestParam("productID")Long productId) {
 
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
@@ -53,7 +53,8 @@ public class FileUploadController {
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "' "+ path);
 
-            Product product = productService.getProductById(16L);
+
+            Product product = productService.getProductById(productId);
             product.setImage("images/" + file.getOriginalFilename());
             productService.saveProduct(product);
 
