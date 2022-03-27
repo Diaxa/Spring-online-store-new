@@ -18,8 +18,6 @@ public class Product {
     private String color;
     @NotNull(message = "Price should not be null!")
     private Double price;
-    @Column(nullable = true, length = 64)
-    private String photos;
     private String image;
 
 
@@ -60,14 +58,6 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public String getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(String photos) {
-        this.photos = photos;
     }
 
     public Long getId() {
