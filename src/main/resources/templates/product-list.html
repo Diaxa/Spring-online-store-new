@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title>Goods List</title>
-
+    <link rel="stylesheet" th:href="@{/css/styleList.css/}"/>
     <link rel="stylesheet" th:href="@{webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
-<!--    <link rel="stylesheet" th:href="@{/css/main.css}"/>-->
+<!--    <link rel="stylesheet" th:href="@{/css/styleForm.css}"/>-->
 
 </head>
 
@@ -14,21 +14,19 @@
 <h1>Product List</h1>
 <div>
     <a th:href="@{/products/form}"
-       class="btn btn-primary btn-sm mb-3">
+       class="button">
         Add Product
     </a>
     <a th:href="@{/products/filter}"
-       class="btn btn-primary btn-sm mb-3">
+       class="button">
         Find Product
     </a>
 
 
 </div>
 
-<div>
-        <label>Photos: </label>
-        <input type="file" name="images" accept="image/png, image/jpeg" />
-        <img src="../static/images/furniture.png" width="150"  th:src="@{images/furniture.png}" />
+<div class="top-image">
+        <img src="../static/images/furniture.png" width="250" th:src="@{images/furniture.png}" />
 
 </div>
 <div>
@@ -41,6 +39,7 @@
             <th scope="col"> Code </th>
             <th scope="col"> Color </th>
             <th scope="col"> Price </th>
+            <th scope="col"> Action </th>
 
         </tr>
         </thead>

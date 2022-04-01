@@ -33,6 +33,12 @@ public class Product {
         this.price = price;
     }
 
+    public Product(Long id,String category, String code) {
+        this.id = id;
+        this.category = category;
+        this.code = code;
+    }
+
     @Override
     public String toString() {
         return "Goods{" +

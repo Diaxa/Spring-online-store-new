@@ -107,22 +107,22 @@ public class ProductMvcController {
                                  BindingResult result,
                                  @RequestParam("file") MultipartFile file) {
 
+
+        if (result.hasErrors()) {
+            String errorMessage = "";
+            for (FieldError error : result.getFieldErrors()) {
+                errorMessage += error.getField() + ": " + error.getDefaultMessage() + "\n";
+            }
+            return "product-form";
+        }
+
+
         try {
 
             // Get the file and save it somewhere
             byte[] bytes = file.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
-
-
-            if (result.hasErrors()) {
-                String errorMessage = "";
-                for (FieldError error : result.getFieldErrors()) {
-                    errorMessage += error.getField() + ": " + error.getDefaultMessage() + "\n";
-                }
-                return "product-form";
-            }
-
 
             product.setImage("images/" + file.getOriginalFilename());
             productService.saveProduct(product);
